@@ -96,15 +96,8 @@ export default function MainHeader() {
           </div>
         </div>
 
-        {/* Admin Link */}
-        <div className="flex items-center">
-          <Link
-            href="/admin/dashboard"
-            className="text-zinc-400 hover:text-white text-sm px-3 py-2 rounded-lg hover:bg-zinc-800 transition-colors"
-          >
-            Admin
-          </Link>
-        </div>
+        {/* Hidden Admin Access - Access via /admin */}
+        <div className="flex items-center">{/* Admin interface accessible only via direct URL navigation */}</div>
       </div>
 
       {/* Navigation Menu */}
