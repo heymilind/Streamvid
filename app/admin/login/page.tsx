@@ -31,7 +31,13 @@ export default function AdminLogin() {
     // Simulate authentication delay
     await new Promise((resolve) => setTimeout(resolve, 1000))
 
-    if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
+    // Get current stored credentials or use defaults
+    const storedCredentials = localStorage.getItem("adminCredentials")
+    const currentCredentials = storedCredentials
+      ? JSON.parse(storedCredentials)
+      : { username: "admin", password: "flapadmin2025@06#" }
+
+    if (username === currentCredentials.username && password === currentCredentials.password) {
       // Set authentication token in localStorage
       localStorage.setItem(
         "adminAuth",

@@ -32,6 +32,7 @@ import {
 } from "lucide-react"
 import Link from "next/link"
 import ChangePasswordModal from "./change-password-modal"
+import SecurityDashboard from "./security-dashboard"
 
 interface VideoData {
   id: string
@@ -1588,71 +1589,76 @@ export default function AdminDashboard() {
 
           {/* Settings Tab */}
           <TabsContent value="settings">
-            <div className="bg-zinc-900 border border-zinc-800 rounded-xl">
-              <CardHeader>
-                <CardTitle className="text-lg font-semibold text-white">Admin Settings</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-6">
-                  <div className="p-4 bg-amber-900/20 border border-amber-800 rounded-xl">
-                    <h4 className="font-medium text-amber-300 mb-2">Security Notice</h4>
-                    <p className="text-sm text-amber-200">
-                      This admin panel is protected by authentication. Session expires after 24 hours.
-                    </p>
-                  </div>
-
-                  <div>
-                    <h4 className="font-medium text-white mb-3">Security Settings</h4>
-                    <div className="space-y-3">
-                      <ChangePasswordModal
-                        trigger={
-                          <Button className="bg-blue-600 text-white hover:bg-blue-700">
-                            <Key className="w-4 h-4 mr-2" />
-                            Change Password
-                          </Button>
-                        }
-                      />
-                      <div className="text-sm text-zinc-400 space-y-2">
-                        <div className="flex justify-between">
-                          <span>Session Status:</span>
-                          <span className="font-medium text-green-400">Active</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Login Time:</span>
-                          <span className="font-medium">{new Date().toLocaleString()}</span>
-                        </div>
-                      </div>
+            <div className="space-y-6">
+              <div className="bg-zinc-900 border border-zinc-800 rounded-xl">
+                <CardHeader>
+                  <CardTitle className="text-lg font-semibold text-white">Admin Settings</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-6">
+                    <div className="p-4 bg-amber-900/20 border border-amber-800 rounded-xl">
+                      <h4 className="font-medium text-amber-300 mb-2">Security Notice</h4>
+                      <p className="text-sm text-amber-200">
+                        This admin panel is protected by authentication. Session expires after 24 hours.
+                      </p>
                     </div>
-                  </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <h4 className="font-medium text-white mb-3">System Stats</h4>
-                      <div className="text-sm text-zinc-400 space-y-2">
-                        <div className="flex justify-between">
-                          <span>Total Videos:</span>
-                          <span className="font-medium">{uploadedVideos.length}</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Categories:</span>
-                          <span className="font-medium">{VIDEO_CATEGORIES.length}</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Storage:</span>
-                          <span className="font-medium">LocalStorage</span>
+                      <h4 className="font-medium text-white mb-3">Security Settings</h4>
+                      <div className="space-y-3">
+                        <ChangePasswordModal
+                          trigger={
+                            <Button className="bg-blue-600 text-white hover:bg-blue-700">
+                              <Key className="w-4 h-4 mr-2" />
+                              Change Password
+                            </Button>
+                          }
+                        />
+                        <div className="text-sm text-zinc-400 space-y-2">
+                          <div className="flex justify-between">
+                            <span>Session Status:</span>
+                            <span className="font-medium text-green-400">Active</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span>Login Time:</span>
+                            <span className="font-medium">{new Date().toLocaleString()}</span>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div className="pt-6 border-t border-zinc-700">
-                    <Button onClick={handleLogout} className="bg-red-600 text-white hover:bg-red-700">
-                      <LogOut className="w-4 h-4 mr-2" />
-                      Logout from Admin Panel
-                    </Button>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <h4 className="font-medium text-white mb-3">System Stats</h4>
+                        <div className="text-sm text-zinc-400 space-y-2">
+                          <div className="flex justify-between">
+                            <span>Total Videos:</span>
+                            <span className="font-medium">{uploadedVideos.length}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span>Categories:</span>
+                            <span className="font-medium">{VIDEO_CATEGORIES.length}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span>Storage:</span>
+                            <span className="font-medium">LocalStorage</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="pt-6 border-t border-zinc-700">
+                      <Button onClick={handleLogout} className="bg-red-600 text-white hover:bg-red-700">
+                        <LogOut className="w-4 h-4 mr-2" />
+                        Logout from Admin Panel
+                      </Button>
+                    </div>
                   </div>
-                </div>
-              </CardContent>
+                </CardContent>
+              </div>
+
+              {/* Security Dashboard */}
+              <SecurityDashboard />
             </div>
           </TabsContent>
         </Tabs>
