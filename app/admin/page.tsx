@@ -75,16 +75,17 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Back to Home Link */}
-      <div className="absolute top-6 left-6 z-10">
-        <Link href="/" className="flex items-center gap-2 text-gray-500 hover:text-gray-700 transition-colors">
-          <ArrowLeft className="w-4 h-4" />
-          <span className="text-sm">Back to Home</span>
-        </Link>
-      </div>
+    <div className="min-h-screen flex">
+      {/* Left Panel - Login Form */}
+      <div className="flex-1 bg-white flex items-center justify-center px-8 relative">
+        {/* Back to Home Link */}
+        <div className="absolute top-6 left-6">
+          <Link href="/" className="flex items-center gap-2 text-gray-500 hover:text-gray-700 transition-colors">
+            <ArrowLeft className="w-4 h-4" />
+            <span className="text-sm">Back to Home</span>
+          </Link>
+        </div>
 
-      <div className="flex items-center justify-center min-h-screen px-4">
         <div className="w-full max-w-sm">
           {/* Header */}
           <div className="text-center mb-8">
@@ -171,19 +172,32 @@ export default function AdminPage() {
             </div>
 
             {/* Demo Credentials */}
-            <div className="text-center mt-6 p-4 bg-gray-100 rounded-xl">
-              <p className="text-xs text-gray-500">Demo credentials: admin / flapadmin2025@06#</p>
-            </div>
-          </div>
-
-          {/* Footer */}
-          <div className="text-center mt-12">
-            <div className="flex items-center justify-center gap-2 text-sm text-gray-400">
-              <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-              <span>StreamHub by Admin Team</span>
+            <div className="text-center mt-6">
+              <p className="text-xs text-gray-500">Demo credentials: admin / streamhub2024</p>
             </div>
           </div>
         </div>
+
+        {/* Footer */}
+        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2">
+          <div className="flex items-center justify-center gap-2 text-sm text-gray-400">
+            <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+            <span>StreamHub by Admin Team</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Right Panel - Decorative */}
+      <div className="flex-1 bg-gradient-to-br from-rose-200 to-rose-300 relative overflow-hidden">
+        {/* Decorative Elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-1/4 right-1/4 w-32 h-32 border border-white/20 rounded-lg transform rotate-12"></div>
+          <div className="absolute bottom-1/3 left-1/4 w-24 h-24 border border-white/20 rounded-lg transform -rotate-12"></div>
+          <div className="absolute top-1/2 right-1/2 w-16 h-16 border border-white/20 rounded-lg transform rotate-45"></div>
+        </div>
+
+        {/* Subtle Pattern Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-rose-300/20 to-transparent"></div>
       </div>
     </div>
   )
