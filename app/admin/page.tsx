@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { Eye, EyeOff, Mail, Lock, Shield, ArrowLeft } from "lucide-react"
+import { Eye, EyeOff, Mail, Lock, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 
 export default function AdminPage() {
@@ -77,102 +77,111 @@ export default function AdminPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Back to Home Link */}
-      <div className="absolute top-4 left-4 z-10">
-        <Link href="/" className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors">
+      <div className="absolute top-6 left-6 z-10">
+        <Link href="/" className="flex items-center gap-2 text-gray-500 hover:text-gray-700 transition-colors">
           <ArrowLeft className="w-4 h-4" />
           <span className="text-sm">Back to Home</span>
         </Link>
       </div>
 
       <div className="flex items-center justify-center min-h-screen px-4">
-        <div className="w-full max-w-md">
+        <div className="w-full max-w-sm">
           {/* Header */}
           <div className="text-center mb-8">
-            <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Shield className="w-8 h-8 text-white" />
+            <p className="text-gray-500 text-sm mb-2">Log in to</p>
+            <h1 className="text-3xl font-bold text-gray-900 mb-6">StreamHub</h1>
+
+            {/* Admin Access Badge */}
+            <div className="inline-flex items-center gap-2 bg-gray-900 text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
+              <div className="w-2 h-2 bg-white rounded-full"></div>
+              Admin Access
             </div>
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">Admin Access</h1>
-            <p className="text-gray-600">Sign in to access the administrative dashboard</p>
+
+            <p className="text-gray-400 text-sm mb-6">or</p>
           </div>
 
           {/* Login Form */}
-          <div className="bg-white rounded-lg shadow-lg p-8">
-            <form onSubmit={handleLogin} className="space-y-6">
-              {error && (
-                <Alert className="border-red-200 bg-red-50">
-                  <AlertDescription className="text-red-800 text-sm">{error}</AlertDescription>
-                </Alert>
-              )}
+          <div className="space-y-4">
+            {error && (
+              <Alert className="border-red-200 bg-red-50">
+                <AlertDescription className="text-red-800 text-sm">{error}</AlertDescription>
+              </Alert>
+            )}
 
-              <div className="space-y-4">
-                <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                  <Input
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    placeholder="Username"
-                    required
-                    disabled={isLoading}
-                    className="pl-10 h-12 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                  />
-                </div>
+            <form onSubmit={handleLogin} className="space-y-4">
+              <div className="relative">
+                <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Input
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder="admin"
+                  required
+                  disabled={isLoading}
+                  className="pl-12 h-14 bg-blue-50 border-blue-100 focus:border-blue-300 focus:ring-blue-200 rounded-xl text-gray-700 placeholder-gray-400"
+                />
+              </div>
 
-                <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                  <Input
-                    type={showPassword ? "text" : "password"}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Password"
-                    required
-                    disabled={isLoading}
-                    className="pl-10 pr-10 h-12 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                  />
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="sm"
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 h-8 w-8 p-0"
-                    onClick={() => setShowPassword(!showPassword)}
-                    disabled={isLoading}
-                  >
-                    {showPassword ? (
-                      <EyeOff className="h-4 w-4 text-gray-400" />
-                    ) : (
-                      <Eye className="h-4 w-4 text-gray-400" />
-                    )}
-                  </Button>
-                </div>
+              <div className="relative">
+                <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Input
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="••••••••••••"
+                  required
+                  disabled={isLoading}
+                  className="pl-12 pr-12 h-14 bg-blue-50 border-blue-100 focus:border-blue-300 focus:ring-blue-200 rounded-xl text-gray-700"
+                />
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 h-8 w-8 p-0 hover:bg-transparent"
+                  onClick={() => setShowPassword(!showPassword)}
+                  disabled={isLoading}
+                >
+                  {showPassword ? (
+                    <EyeOff className="h-5 w-5 text-gray-400" />
+                  ) : (
+                    <Eye className="h-5 w-5 text-gray-400" />
+                  )}
+                </Button>
               </div>
 
               <Button
                 type="submit"
-                className="w-full h-12 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium"
+                className="w-full h-14 bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium rounded-xl border-0 transition-colors"
                 disabled={isLoading}
               >
                 {isLoading ? (
                   <>
-                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
-                    Signing in...
+                    <div className="w-4 h-4 border-2 border-gray-400/30 border-t-gray-600 rounded-full animate-spin mr-2" />
+                    Logging in...
                   </>
                 ) : (
-                  "Sign In"
+                  "Log in"
                 )}
               </Button>
             </form>
 
-            {/* Security Notice */}
-            <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-              <p className="text-xs text-gray-600 text-center">
-                This is a secure administrative area. All access attempts are logged and monitored.
-              </p>
+            {/* Forgot Password Link */}
+            <div className="text-center mt-6">
+              <button className="text-gray-500 hover:text-gray-700 text-sm transition-colors">Forgot password?</button>
+            </div>
+
+            {/* Demo Credentials */}
+            <div className="text-center mt-6 p-4 bg-gray-100 rounded-xl">
+              <p className="text-xs text-gray-500">Demo credentials: admin / flapadmin2025@06#</p>
             </div>
           </div>
 
           {/* Footer */}
-          <div className="text-center mt-8">
-            <p className="text-sm text-gray-500">StreamHub Admin Panel © {new Date().getFullYear()}</p>
+          <div className="text-center mt-12">
+            <div className="flex items-center justify-center gap-2 text-sm text-gray-400">
+              <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+              <span>StreamHub by Admin Team</span>
+            </div>
           </div>
         </div>
       </div>
