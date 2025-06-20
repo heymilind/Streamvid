@@ -28,8 +28,10 @@ import {
   BarChart3,
   Tag,
   ImageIcon,
+  Key,
 } from "lucide-react"
 import Link from "next/link"
+import ChangePasswordModal from "./change-password-modal"
 
 interface VideoData {
   id: string
@@ -1599,25 +1601,31 @@ export default function AdminDashboard() {
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <h4 className="font-medium text-white mb-3">Current Session</h4>
+                  <div>
+                    <h4 className="font-medium text-white mb-3">Security Settings</h4>
+                    <div className="space-y-3">
+                      <ChangePasswordModal
+                        trigger={
+                          <Button className="bg-blue-600 text-white hover:bg-blue-700">
+                            <Key className="w-4 h-4 mr-2" />
+                            Change Password
+                          </Button>
+                        }
+                      />
                       <div className="text-sm text-zinc-400 space-y-2">
                         <div className="flex justify-between">
-                          <span>User:</span>
-                          <span className="font-medium">{adminUser}</span>
+                          <span>Session Status:</span>
+                          <span className="font-medium text-green-400">Active</span>
                         </div>
                         <div className="flex justify-between">
                           <span>Login Time:</span>
                           <span className="font-medium">{new Date().toLocaleString()}</span>
                         </div>
-                        <div className="flex justify-between">
-                          <span>Session Status:</span>
-                          <span className="font-medium text-green-400">Active</span>
-                        </div>
                       </div>
                     </div>
+                  </div>
 
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <h4 className="font-medium text-white mb-3">System Stats</h4>
                       <div className="text-sm text-zinc-400 space-y-2">

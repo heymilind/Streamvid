@@ -20,7 +20,7 @@ export default function AdminLogin() {
   // Admin credentials (in production, this would be handled by a secure backend)
   const ADMIN_CREDENTIALS = {
     username: "admin",
-    password: "streamhub2024",
+    password: "flapadmin2025@06#",
   }
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -137,7 +137,6 @@ export default function AdminLogin() {
 
           <div className="text-center mt-6 space-y-2">
             <button className="text-gray-500 text-sm hover:text-gray-700">Forgot password?</button>
-            <p className="text-gray-500 text-sm">Demo credentials: admin / streamhub2024</p>
           </div>
         </div>
       </div>
